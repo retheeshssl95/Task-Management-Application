@@ -1,0 +1,103 @@
+
+<?php $__env->startSection('main'); ?>
+    <!--------main-content-------------> 
+		<div class="main-content">
+			<div class="row header"> 
+        <!-- Start col => Page Header -->
+          <div class="col-sm-12 p-0 d-flex justify-content-lg-start justify-content-center">
+            <h2 class="ml-lg-2">New Project</h2>
+          </div>
+        <!-- End col => Page Header -->      
+      </div><hr> 
+      <div class="table-wrapper">
+        <div class="col-sm-12 ">       
+            <form action="/tasks/store" method="post" enctype="multipart/form-data">
+              <?php echo csrf_field(); ?>
+                <div class="row">
+                    <div class="col-sm-6">
+                      <div class='form-group'>
+                        <label for="project_name" class="form-label">Project Name</label>
+                        <input type="text" name="project_name" id="project_name" value="<?php echo e(old('project_name')); ?>"
+                        class="form-control <?php if($errors->has('project_name')): ?> <?php echo e('is-invalid'); ?> <?php endif; ?>">
+                        <?php if($errors->has('project_name')): ?>
+                          <div class='invalid-feedback '><?php echo e($errors->first("project_name")); ?></div> 
+                        <?php endif; ?>   
+                      </div>
+                    </div> 
+                    <div class="col-sm-6">
+                      <div class='form-group'>
+                        <label for="status" class="form-label">Status</label>
+                        
+                        <select id="status" name='status' class="form-control">
+                          <option value="Pending">Pending</option>
+                          <option value="In Progress">In Progress</option>
+                          <option value="Completed">Completed</option>
+                        </select>
+                      </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-6">
+                      <div class='form-group'>
+                        <label for="start_date" class="form-label ">Start Date</label>
+                        <input type="date" name="start_date" id="start_date" 
+                        class="form-control " value="<?php echo e(old('start_date')); ?>">
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class='form-group'>
+                        <label for="end_date" class="form-label ">End Date</label>
+                        <input type="date" name="end_date" id="end_date" 
+                        class="form-control" value="<?php echo e(old('end_date')); ?>">
+                      </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-6">
+                      <div class='form-group'>
+                        <label for="project_manager" class="form-label ">Project Manager</label>
+                        <input type="text" name="project_manager" id="project_manager" value="<?php echo e(old('project_manager')); ?>"
+                        class="form-control <?php if($errors->has('project_manager')): ?> <?php echo e('is-invalid'); ?> <?php endif; ?>">
+                        <?php if($errors->has('project_manager')): ?>
+                          <div class='invalid-feedback '><?php echo e($errors->first("project_manager")); ?></div> 
+                        <?php endif; ?>   
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                          <label for="project_team_member" class="form-label ">Project Team Members</label>
+                          <input type="text" name="project_team_member" id="project_team_member" value="<?php echo e(old('project_team_member')); ?>" 
+                          class="form-control <?php if($errors->has('project_team_member')): ?> <?php echo e('is-invalid'); ?> <?php endif; ?>">
+                          <?php if($errors->has('project_team_member')): ?>
+                            <div class='invalid-feedback '><?php echo e($errors->first("project_team_member")); ?></div> 
+                          <?php endif; ?>   
+                        </div>
+                    </div>
+                </div>   
+
+                <div class="row">
+                    <div class="col-sm-12">
+                      <div class='form-group'>
+                      <label for="description" class="control-label">Description</label>
+                      <textarea name="description" id="description" cols="30" rows="10" 
+                      class="summernote form-control <?php if($errors->has('description')): ?> <?php echo e('is-invalid'); ?> <?php endif; ?>"><?php echo e(old('description')); ?></textarea>
+                      <?php if($errors->has('description')): ?>
+                        <div class='invalid-feedback '><?php echo e($errors->first("description")); ?></div> 
+                      <?php endif; ?>   
+                      </div>
+                    </div>                  
+                </div><hr>
+
+                <div>
+                    <button type="submit" class="btn btn-outline-success ">Save Project</button>
+                    <button type="reset" class="btn btn-outline-danger ">Clear All</button>                   
+                </div>
+            </form>
+        </div>         
+      </div>		    
+		</div>
+  
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\Laravel Project\Task_Management_System\task_management\resources\views/task/add_task.blade.php ENDPATH**/ ?>
